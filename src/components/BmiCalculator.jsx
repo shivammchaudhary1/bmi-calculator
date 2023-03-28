@@ -12,6 +12,7 @@ import {
   Heading,
   GridItem,
 } from "@chakra-ui/react";
+import "../style/BmiCalculator.css";
 
 const BmiCalculator = () => {
   const [weight, setWeight] = useState("");
@@ -43,15 +44,19 @@ const BmiCalculator = () => {
   };
 
   return (
-    <Container maxW="container.sm" mt={8}>
+    <Container maxW="container.sm" mt={8} className="container">
       <Heading as="h1" textAlign="center" mb={8}>
         BMI Calculator
       </Heading>
 
       <SimpleGrid columns={2} spacing={4} className="bmi-form">
         <Box>
-          <Text>Weight (in kg)</Text>
+          {/* <Text>Weight (in kg)</Text> */}
+          <Heading as="h4" size="md">
+            Weight (in kg)
+          </Heading>
           <input
+            placeholder="Enter Here"
             type="number"
             className="weight"
             value={weight}
@@ -59,8 +64,12 @@ const BmiCalculator = () => {
           />
         </Box>
         <Box>
-          <Text>Height (in cm)</Text>
+          <Heading as="h4" size="md">
+            Height (in cm)
+          </Heading>
+          {/* <Text>Height (in cm)</Text> */}
           <input
+            placeholder="Enter Here"
             type="number"
             className="height"
             value={height}
@@ -72,13 +81,20 @@ const BmiCalculator = () => {
       <Flex justifyContent="center" mt={8}>
         <Stack spacing={4} direction="row">
           <Button
+            role="button"
+            className="button-41"
             colorScheme="green"
             onClick={calculateBMI}
             disabled={!weight || !height}
           >
             Calculate
           </Button>
-          <Button colorScheme="red" onClick={resetForm}>
+          <Button
+            role="button"
+            colorScheme="red"
+            onClick={resetForm}
+            className="button-41"
+          >
             Reset
           </Button>
         </Stack>
@@ -92,7 +108,10 @@ const BmiCalculator = () => {
           className="bmi-result"
         >
           <GridItem>
-            <Text>Your BMI</Text>
+            <Heading as="h5" size="sm">
+              Your BMI
+            </Heading>
+
             <Text fontWeight="bold" fontSize="2xl" className="bmi-value">
               {bmiValue}
             </Text>
